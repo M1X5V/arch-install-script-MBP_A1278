@@ -3,40 +3,23 @@
 #
 
 [options]
-# The following paths are commented out with their default values listed.
-# If you wish to use different paths, uncomment and update the lines.
-#RootDir     = /
-#DBPath      = /var/lib/pacman/
-#CacheDir    = /var/cache/pacman/pkg/
-#LogFile     = /var/log/pacman.log
-#GPGDir      = /etc/pacman.d/gnupg/
-#HookDir     = /etc/pacman.d/hooks/
-HoldPkg      = pacman glibc
+# Prevent removal of essential packages
+HoldPkg = pacman glibc
+
+# Set the system architecture (auto is recommended)
 Architecture = auto
 
-# Colorize output messages
+# Enable colored output
 Color
 
-# Verbose package lists
+# Show verbose package lists
 VerbosePkgLists
 
-# By default, pacman accepts packages signed by keys that its local keyring
-# trusts (see pacman-key and its man page), as well as unsigned packages.
-SigLevel    = Required DatabaseOptional
+# Signature levels for verifying packages
+SigLevel = Required DatabaseOptional
 LocalFileSigLevel = Optional
-#RemoteFileSigLevel = Required
 
-# Misc options
-# UseSyslog
-# ShowSize
-# ILoveCandy
-# TotalDownload
-# CheckSpace
-# DisableDownloadTimeout
-
-# NOTE: If you run into issues with package signatures, verify that the
-# keyring is properly updated with pacman -Sy archlinux-keyring.
-
+# Repositories
 [core]
 Include = /etc/pacman.d/mirrorlist
 
@@ -46,14 +29,11 @@ Include = /etc/pacman.d/mirrorlist
 [community]
 Include = /etc/pacman.d/mirrorlist
 
-# If you want to run 32-bit applications on your x86_64 system, enable the
-# multilib repository as shown below. If you don't need it, ignore this section.
+# Uncomment to enable multilib for 32-bit applications
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 
-# The following lines are for custom local or unofficial repositories. See
-# the pacman manpage for tips on creating your own repositories.
-
+# Uncomment and configure the following lines to add custom repositories
 #[custom]
 #SigLevel = Optional TrustAll
 #Server = file:///path/to/custom/repo
