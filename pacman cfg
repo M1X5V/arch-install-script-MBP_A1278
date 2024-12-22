@@ -1,30 +1,59 @@
+#
 # /etc/pacman.conf
+#
 
-#[options]
-# The default architecture for the system
+[options]
+# The following paths are commented out with their default values listed.
+# If you wish to use different paths, uncomment and update the lines.
+#RootDir     = /
+#DBPath      = /var/lib/pacman/
+#CacheDir    = /var/cache/pacman/pkg/
+#LogFile     = /var/log/pacman.log
+#GPGDir      = /etc/pacman.d/gnupg/
+#HookDir     = /etc/pacman.d/hooks/
+HoldPkg      = pacman glibc
 Architecture = auto
 
-# Use syslog for logging
-LogFile = /var/log/pacman.log
-# Keep the downloaded package files
-CacheDir = /var/cache/pacman/pkg/
-# Ignore some packages during upgrades
-# IgnorePkg   =
-# IgnoreGroup =
-# Use a backup mirror list
-# NoExtract =
+# Colorize output messages
+Color
 
-# The repositories
+# Verbose package lists
+VerbosePkgLists
+
+# By default, pacman accepts packages signed by keys that its local keyring
+# trusts (see pacman-key and its man page), as well as unsigned packages.
+SigLevel    = Required DatabaseOptional
+LocalFileSigLevel = Optional
+#RemoteFileSigLevel = Required
+
+# Misc options
+# UseSyslog
+# ShowSize
+# ILoveCandy
+# TotalDownload
+# CheckSpace
+# DisableDownloadTimeout
+
+# NOTE: If you run into issues with package signatures, verify that the
+# keyring is properly updated with pacman -Sy archlinux-keyring.
+
 [core]
-Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
+Include = /etc/pacman.d/mirrorlist
 
 [extra]
-Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
+Include = /etc/pacman.d/mirrorlist
 
 [community]
-Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
+Include = /etc/pacman.d/mirrorlist
 
-#[multilib]
-# Uncomment the following line to enable the multilib repository
+# If you want to run 32-bit applications on your x86_64 system, enable the
+# multilib repository as shown below. If you don't need it, ignore this section.
 [multilib]
 Include = /etc/pacman.d/mirrorlist
+
+# The following lines are for custom local or unofficial repositories. See
+# the pacman manpage for tips on creating your own repositories.
+
+#[custom]
+#SigLevel = Optional TrustAll
+#Server = file:///path/to/custom/repo
