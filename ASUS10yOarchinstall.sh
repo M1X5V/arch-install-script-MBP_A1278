@@ -3,7 +3,7 @@
 # Arch Linux Installation Script
 # Partition Scheme: /boot, /, /home, swap
 # Desktop Environment: KDE Plasma
-# User: Diana (Password: 123456789)
+# User: User (Password: 123456789)
 # Language: German
 
 # Mount partitions
@@ -44,7 +44,7 @@ configure_system() {
   echo "LANG=de_DE.UTF-8" > /etc/locale.conf
 
   # Set hostname
-  echo "arch-laptop" > /etc/hostname
+  echo "HalalArch" > /etc/hostname
   echo "127.0.0.1   localhost" >> /etc/hosts
   echo "::1         localhost" >> /etc/hosts
   echo "127.0.1.1   arch-laptop.localdomain arch-laptop" >> /etc/hosts
@@ -55,7 +55,7 @@ configure_users() {
   echo "Configuring root and user accounts..."
   echo "root:123456789" | chpasswd                      # Set root password
   useradd -m -G wheel -s /bin/bash Diana               # Create user Diana
-  echo "Diana:123456789" | chpasswd                    # Set password for Diana
+  echo "Halal:123456789" | chpasswd                    # Set password for Diana
   sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 }
 
