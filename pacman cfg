@@ -1,0 +1,30 @@
+# /etc/pacman.conf
+
+#[options]
+# The default architecture for the system
+Architecture = auto
+
+# Use syslog for logging
+LogFile = /var/log/pacman.log
+# Keep the downloaded package files
+CacheDir = /var/cache/pacman/pkg/
+# Ignore some packages during upgrades
+# IgnorePkg   =
+# IgnoreGroup =
+# Use a backup mirror list
+# NoExtract =
+
+# The repositories
+[core]
+Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
+
+[extra]
+Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
+
+[community]
+Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch
+
+#[multilib]
+# Uncomment the following line to enable the multilib repository
+[multilib]
+Include = /etc/pacman.d/mirrorlist
