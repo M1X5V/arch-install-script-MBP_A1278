@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#note: ull need to configure grub urself bcs i fucked up somewhere and im to lazy to fine out where :/
 # Arch Linux Installation Script with KDE Plasma
 # User: user, Password: 123456789
 # Hostname: Asus
