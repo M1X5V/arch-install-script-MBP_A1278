@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#note: ull need to configure grub urself bcs i fucked up somewhere and im to lazy to fine out where :/
 # Arch Linux Installation Script with KDE Plasma
 # User: user, Password: 123456789
 # Hostname: Asus
@@ -49,6 +48,9 @@ install_system() {
   echo "Installing base system and KDE Plasma..."
   pacstrap /mnt base linux linux-firmware vim nano networkmanager \
     xorg xorg-server plasma-meta kde-applications-meta sddm
+  
+  # Install GRUB bootloader
+  pacstrap /mnt grub os-prober
 }
 
 # Generate fstab
@@ -83,6 +85,11 @@ echo "root:123456789" | chpasswd
 useradd -m -G wheel -s /bin/bash user
 echo "user:123456789" | chpasswd
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
+
+# Install GRUB to the disk
+grub-install --target=i386-pc $DISK  # Change this if you're using UEFI
+# Generate GRUB configuration file
+grub-mkconfig -o /boot/grub/grub.cfg
 
 # Enable services
 systemctl enable NetworkManager
