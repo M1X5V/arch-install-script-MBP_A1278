@@ -14,3 +14,5 @@ make it executable: chmod +x install.sh
 run it: bash install.sh
 
 Now it should install the system 
+
+Note: replace install.sh with the name of the actual script
