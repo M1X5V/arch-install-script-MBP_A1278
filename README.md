@@ -14,5 +14,3 @@ make it executable: chmod +x install.sh
 run it: bash install.sh
 
 Now it should install the system 
-
-Note: in the ASUS10yOarchinstall.sh script file u need to configure grub urself
